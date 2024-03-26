@@ -32,7 +32,7 @@
 # else:
 #     print("No points containing '{}' found.".format(keyword))
 
-
+import os
 from docx import Document
 
 def extract_table_data(file_path):
@@ -55,6 +55,9 @@ def print_table_data(tables_data):
             print("\t".join(row))
         print()
 
+
 file_path = r'E:\python_project\python_docs\python_docs\todo_table.docx'
+filename = os.path.basename(file_path)
+print("Filename:", filename)
 tables_data = extract_table_data(file_path)
 print_table_data(tables_data)
