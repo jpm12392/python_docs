@@ -1,12 +1,13 @@
 from docx import Document
 
-def read_docx(file_path):
-    doc = Document(file_path)
-    text = []
+def print_heading_text(docx_file, heading_text):
+    doc = Document(docx_file)
     for paragraph in doc.paragraphs:
-        text.append(paragraph.text)
-    return '\n'.join(text)
+        if paragraph.style.name.startswith("Heading") and heading_text in paragraph.text:
+            print(paragraph.text)
+            break
+    else:
+        print("Heading not found.")
 
-file_path = 'path_to_your_file.docx'
-content = read_docx(file_path)
-print(content)
+# Usage example
+print_heading_text("your_document.docx", "Your Heading")
